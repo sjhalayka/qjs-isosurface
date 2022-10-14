@@ -13,13 +13,13 @@
 
 #include <cstdlib> // Include this before before glut.h for the sake of MSVC++
 
-#include <GL/glew.h>
-#include <GL/glut.h>
+#include "GL/glew.h"
+#include "GL/glut.h"
 
 // Automatically link in the GLUT and GLEW libraries if compiling on MSVC++
 #ifdef _MSC_VER
 	#pragma comment(lib, "glew32")
-	#pragma comment(lib, "glut32")
+//	#pragma comment(lib, "glut32")
 #endif
 
 

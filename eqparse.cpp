@@ -3104,7 +3104,7 @@ string quaternion_julia_set_equation_parser::emit_vertex_interp_fragment_shader_
 	code += "    vec4 v0 = texture1D(input0, gl_TexCoord[0].s);\n";
 	code += "    vec4 v1 = texture1D(input1, gl_TexCoord[0].s);\n";
 	code += "\n";
-	code += "    gl_FragData[0].rgb = vertex_interp(v0, v1);\n";
+	code += "    gl_FragData[0].rgba = vec4(vertex_interp(v0, v1), 0.0);\n";
 	code += "}\n";
 
 	return code;

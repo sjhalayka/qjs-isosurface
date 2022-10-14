@@ -1123,7 +1123,7 @@ bool quaternion_julia_set::tesselate_set(const vector<bool> &fractal_set, indexe
 			GLint max_tex_size = 0;
 
 			glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_tex_size);
-
+			
 			while(0 < num_vertex_interps_remaining)
 			{
 				size_t tex_size_x;
@@ -1136,7 +1136,6 @@ bool quaternion_julia_set::tesselate_set(const vector<bool> &fractal_set, indexe
 				const size_t index = num_vertex_interps - num_vertex_interps_remaining;
 				const size_t input_index = index*4;
 				const size_t output_index = index*4;
-
 
 				// Set the FBO size.
 				glBindTexture(GL_TEXTURE_1D, tex_fbo_handle);
@@ -1161,11 +1160,12 @@ bool quaternion_julia_set::tesselate_set(const vector<bool> &fractal_set, indexe
 				glLoadIdentity();
 				glViewport(0, 0, tex_size_x, 1);
 
-				glBegin(GL_LINES);
-					glTexCoord1f(0); glVertex2f(0, 0);
-					glTexCoord1f(1); glVertex2f(1, 0);
+				glBegin(GL_QUADS);
+					glTexCoord2f(0, 1);	glVertex2f(0, 1);
+					glTexCoord2f(0, 0);	glVertex2f(0, 0);
+					glTexCoord2f(1, 0);	glVertex2f(1, 0);
+					glTexCoord2f(1, 1);	glVertex2f(1, 1);
 				glEnd();
-
 
 				// Read from GPU memory.
 				glReadBuffer(GL_COLOR_ATTACHMENT0_EXT);
